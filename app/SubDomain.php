@@ -12,5 +12,6 @@ class SubDomain extends Model
     protected $fillable = [
         'name',
         'email',
+        'ip',
     ];
 }

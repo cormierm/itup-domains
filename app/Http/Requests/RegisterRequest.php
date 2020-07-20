@@ -11,6 +11,7 @@ class RegisterRequest extends FormRequest
     {
         return [
             'sub_domain' => 'required|string|min:2|unique:sub_domains,name',
+            'ip' => 'required|ipv4',
             'email' => 'required|email',
         ];
     }

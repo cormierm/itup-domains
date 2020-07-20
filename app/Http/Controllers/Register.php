@@ -15,6 +15,8 @@ class Register
             'email' => $request->input('email'),
         ]);
 
-        return view('home')->with('success', 'Successfully registered sub domain. Please verify email to activate.');
+        return view('home', [
+            'message' => 'Successfully registered sub domain. Please verify email to activate.'
+        ]);
     }
 }
