@@ -14,6 +14,6 @@ class SubDomain extends Model
         'email',
         'ip',
         'token',
-        'is_verified'
+        'verified_at'
     ];
 }

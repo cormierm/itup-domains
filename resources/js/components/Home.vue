@@ -2,8 +2,12 @@
     <div>
         <h1>ItUp.ca</h1>
 
-        <v-alert v-if="message" type="success">
-            {{ message }}
+        <v-alert v-if="alert" :type="alert.type">
+            {{ alert.text }}
+        </v-alert>
+
+        <v-alert v-if="message" :type="message.type">
+            {{ message.text }}
         </v-alert>
 
         <form @submit.prevent>
@@ -47,10 +51,16 @@
 <script>
     export default {
         name: "Home",
+        props: {
+            alert: {
+                type: Object,
+                default: null,
+            },
+        },
         data() {
             return {
                 loading: false,
-                message: "",
+                message: null,
                 subDomain: '',
                 ip: '',
                 email: '',
@@ -73,7 +83,10 @@
                     ip: this.ip,
                     email: this.email,
                 }).then((response) => {
-                    this.message = response.data.message;
+                    this.message = {
+                        type: 'success',
+                        text: response.data.message
+                    };
                     this.reset();
                 }).catch((err) => {
                     if (err.response.status === 422) {

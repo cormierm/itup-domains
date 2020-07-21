@@ -1,5 +1,5 @@
 @extends('layouts.main')
 
 @section('content')
-    <home></home>
+    <home :alert="{{ json_encode($alert ?? '') }}"></home>
 @endsection
