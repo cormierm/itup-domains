@@ -5,6 +5,7 @@ import 'vuetify/dist/vuetify.min.css'
 window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('home', require('./components/Home.vue').default);
 
 Vue.use(Vuetify)
 

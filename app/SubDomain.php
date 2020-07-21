@@ -13,5 +13,7 @@ class SubDomain extends Model
         'name',
         'email',
         'ip',
+        'token',
+        'is_verified'
     ];
 }
