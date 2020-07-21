@@ -13,7 +13,7 @@ class CreateSubDomainsTable extends Migration
             $table->string('name')->unique();
             $table->string('email');
             $table->string('ip');
-            $table->date('verified_at')->nullable();
+            $table->dateTime('verified_at')->nullable();
             $table->softDeletes();
             $table->timestamps();
             $table->string('token');
