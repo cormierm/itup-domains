@@ -15,8 +15,7 @@
         </div>
     @endif
 
-    <form method="post" action="{{route('register')}}">
-        @csrf
+    <form method="post" action="/register">
 
         <label for="sub_domain">Sub Domain:</label>
         <input type="text" id="sub_domain" name="sub_domain" value="{{old('sub_domain')}}">
