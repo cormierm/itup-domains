@@ -11,11 +11,12 @@ class CreateSubDomainsTable extends Migration
         Schema::create('sub_domains', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->string('ip');
             $table->string('email');
+            $table->string('ip');
             $table->date('verified_at')->nullable();
             $table->softDeletes();
             $table->timestamps();
+            $table->string('token');
         });
     }
 
