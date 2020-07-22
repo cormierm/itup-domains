@@ -12,9 +12,9 @@
 
         <form @submit.prevent>
             <v-text-field
-                label="Sub Domain"
-                v-model="subDomain"
-                :error-messages="formErrors['sub_domain']"
+                label="Hostname"
+                v-model="hostname"
+                :error-messages="formErrors['hostname']"
             ></v-text-field>
 
             <v-text-field
@@ -61,7 +61,7 @@
             return {
                 loading: false,
                 message: null,
-                subDomain: '',
+                hostname: '',
                 ip: '',
                 email: '',
                 formErrors: {},
@@ -72,14 +72,14 @@
                 this.formErrors = {};
                 this.ip = '';
                 this.email = '';
-                this.subDomain = '';
+                this.hostname = '';
             },
             submit() {
                 this.formErrors = {};
                 this.loading = true;
 
                 axios.post('/register', {
-                    sub_domain: this.subDomain,
+                    hostname: this.hostname,
                     ip: this.ip,
                     email: this.email,
                 }).then((response) => {

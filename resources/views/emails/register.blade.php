@@ -1,10 +1,10 @@
 @component('mail::message')
-# Congrats your sub domain has been registered.
+# Congrats your hostname has been registered.
 
-Please click the activate button to activate sub domain.
+Please click the activate button to activate hostname.
 
 @component('mail::button', ['url' => $url])
-Activate Sub Domain
+Activate Hostname
 @endcomponent
 
 Thanks,<br>

@@ -12,17 +12,17 @@ class RegisterTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function itRegistersSubDomainAndSendsEmail(): void
+    public function itRegistersHostnameAndSendsEmail(): void
     {
         Mail::fake();
 
         $this->postJson(route('register'), [
-            'sub_domain' => 'foo',
+            'hostname' => 'foo',
             'ip' => '33.33.33.33',
             'email' => 'foo@bar.com'
         ])->assertSuccessful();
 
-        $this->assertDatabaseHas('sub_domains', [
+        $this->assertDatabaseHas('hostnames', [
             'name' => 'foo',
         ]);
 

@@ -2,7 +2,7 @@
 
 namespace App\Mail;
 
-use App\SubDomain;
+use App\Hostname;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -12,11 +12,11 @@ class Register extends Mailable
     use Queueable, SerializesModels;
 
     /**
-     * @var SubDomain
+     * @var Hostname
      */
     private $subDomain;
 
-    public function __construct(SubDomain $subDomain)
+    public function __construct(Hostname $subDomain)
     {
         $this->subDomain = $subDomain;
     }
