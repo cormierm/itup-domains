@@ -2,8 +2,6 @@
     <div class="home">
         <h1 class="base-title">ItUp.ca</h1>
 
-        <p>Tired of trying to remember an IP address? Register a hostname to use for all your lookup needs.</p>
-
         <v-alert v-if="alert" :type="alert.type">
             {{ alert.text }}
         </v-alert>
@@ -11,6 +9,8 @@
         <v-alert v-if="message" :type="message.type">
             {{ message.text }}
         </v-alert>
+
+        <p>Tired of trying to remember an IP address? Register a hostname to use for all your lookup needs.</p>
 
         <v-card
             class="mx-auto"
@@ -23,6 +23,7 @@
 
             <v-card-text>
                 <v-text-field
+                    class="v-field"
                     label="Hostname"
                     v-model="hostname"
                     :read-only="validHostname"
@@ -35,6 +36,7 @@
 
                 <div v-if="validHostname">
                     <v-text-field
+                        class="v-field"
                         label="Email"
                         type="email"
                         v-model="email"
@@ -42,26 +44,29 @@
                     ></v-text-field>
 
                     <v-text-field
+                        class="v-field"
                         label="IP Address"
                         v-model="ip"
                         :error-messages="formErrors['ip']"
                     >
                     </v-text-field>
 
-                    <v-btn
-                        color="info"
-                        class="mr-4"
-                        @click="submit"
-                    >
-                        Register
-                    </v-btn>
-                    <v-btn
-                        color="secondary"
-                        class="mr-4"
-                        @click="reset"
-                    >
-                        Reset
-                    </v-btn>
+                    <div class="register-buttons">
+                        <v-btn
+                            text
+                            :loading="loading"
+                            @click="submit"
+                        >
+                            Register
+                        </v-btn>
+                        <v-btn
+                            text
+                            @click="reset"
+                        >
+                            Reset
+                        </v-btn>
+                    </div>
+
                 </div>
             </v-card-text>
 
@@ -130,6 +135,7 @@
                         console.error(err);
                     }
                 });
+                this.loading = false;
             },
             check() {
                 this.formErrors = {};
@@ -162,6 +168,16 @@
     .base-title {
         font-size: 3rem;
         font-weight: 300;
+    }
+
+    .register-buttons {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .v-field {
+        padding-bottom: 10px;
     }
 
     p {
