@@ -23,6 +23,15 @@ class Activate
             ]);
         }
 
+        if ($hostname->created_at < Carbon::now()->subDay()) {
+            return view('home', [
+                'alert' => [
+                    'type' => 'error',
+                    'text' => 'There was a problem activating. This activation has expired. Please try registering again'
+                ]
+            ]);
+        }
+
         $hostname->update([
             'verified_at' => Carbon::now()
         ]);
