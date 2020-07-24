@@ -11,7 +11,7 @@ use Tests\TestCase;
 class HostnameTest extends TestCase
 {
     use RefreshDatabase;
-    
+
     /** @test */
     public function itReturnsFullName(): void
     {

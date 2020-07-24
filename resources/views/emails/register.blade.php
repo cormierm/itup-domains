@@ -4,7 +4,7 @@
 Please click the activate button to activate hostname.
 
 @component('mail::button', ['url' => $url])
-Activate Hostname
+Activate {{ $domain }}
 @endcomponent
 
 Thanks,<br>

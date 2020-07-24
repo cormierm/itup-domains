@@ -14,18 +14,20 @@ class Register extends Mailable
     /**
      * @var Hostname
      */
-    private $subDomain;
+    private $hostname;
 
-    public function __construct(Hostname $subDomain)
+    public function __construct(Hostname $hostname)
     {
-        $this->subDomain = $subDomain;
+        $this->hostname = $hostname;
     }
 
     public function build(): self
     {
         return $this->from(config('mail.from.address'))
+            ->subject('Activate your hostname: ' . $this->hostname->fullName())
             ->markdown('emails.register', [
-                'url' => route('activate', $this->subDomain->token),
+                'url' => route('activate', $this->hostname->token),
+                'domain' => $this->hostname->fullName()
             ]);
     }
 }
