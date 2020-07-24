@@ -11,7 +11,7 @@
         </v-alert>
 
         <v-card
-            class="mx-auto"
+            class="mx-auto my-10"
             max-width="500"
             color="#1F7087"
             dark
@@ -22,6 +22,7 @@
                 <v-text-field
                     class="v-field"
                     label="Hostname"
+                    prepend-inner-icon="fa-search"
                     v-model="hostname"
                     :read-only="validHostname"
                     maxlength="50"
@@ -51,7 +52,7 @@
                                 outlined
                                 @click="ip = remoteIp"
                             >
-                                <v-icon>fas fa-search</v-icon> {{ remoteIp }}
+                                <v-icon>fa fa-map-marker-alt</v-icon>&nbsp;{{ remoteIp }}
                             </v-btn>
                         </template>
                     </v-text-field>
@@ -71,7 +72,6 @@
                             Reset
                         </v-btn>
                     </div>
-
                 </div>
             </v-card-text>
 
@@ -116,6 +116,7 @@
         },
         watch: {
             hostname() {
+                this.messageHostname = false;
                 this.validHostname = false;
             }
         },

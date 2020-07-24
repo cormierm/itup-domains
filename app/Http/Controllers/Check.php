@@ -10,7 +10,7 @@ class Check
     public function __invoke(CheckRequest $request): JsonResponse
     {
         return new JsonResponse([
-            'message' => 'Congrats, This hostname is available!'
+            'message' => "Congrats, {$request->input('hostname')}.itup.ca is available!"
         ]);
     }
 }
