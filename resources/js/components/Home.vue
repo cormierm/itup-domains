@@ -10,16 +10,13 @@
             {{ message.text }}
         </v-alert>
 
-        <p>Tired of trying to remember an IP address? Register a hostname to use for all your lookup needs.</p>
-
         <v-card
             class="mx-auto"
             max-width="500"
             color="#1F7087"
             dark
         >
-            <v-card-title class="headline">Create Your Hostname</v-card-title>
-            <v-card-subtitle>Start by checking if your hostname is available</v-card-subtitle>
+            <v-card-title class="headline">Search For Your Hostname</v-card-title>
 
             <v-card-text>
                 <v-text-field
@@ -49,6 +46,14 @@
                         v-model="ip"
                         :error-messages="formErrors['ip']"
                     >
+                        <template v-slot:append-outer>
+                            <v-btn
+                                outlined
+                                @click="ip = remoteIp"
+                            >
+                                <v-icon>fas fa-search</v-icon> {{ remoteIp }}
+                            </v-btn>
+                        </template>
                     </v-text-field>
 
                     <div class="register-buttons">
@@ -90,8 +95,12 @@
         props: {
             alert: {
                 type: Object,
-                default: null,
+                default: null
             },
+            remoteIp: {
+                type: String,
+                default: null
+            }
         },
         data() {
             return {
@@ -104,6 +113,11 @@
                 formErrors: {},
                 validHostname: false,
             };
+        },
+        watch: {
+            hostname() {
+                this.validHostname = false;
+            }
         },
         methods: {
             reset() {
