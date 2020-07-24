@@ -16,4 +16,10 @@ class Hostname extends Model
         'token',
         'verified_at'
     ];
+
+    public function fullName(): string
+    {
+
+        return sprintf('%s.%s', $this->name, config('itup.domain'));
+    }
 }
