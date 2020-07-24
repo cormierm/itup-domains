@@ -116,14 +116,14 @@
         },
         watch: {
             hostname() {
-                this.messageHostname = false;
+                this.messageHostname = '';
                 this.validHostname = false;
             }
         },
         methods: {
             reset() {
                 this.validHostname = false;
-                this.messageHostname = [];
+                this.messageHostname = '';
                 this.formErrors = {};
                 this.ip = '';
                 this.email = '';
@@ -154,7 +154,7 @@
             },
             check() {
                 this.formErrors = {};
-                this.messageHostname = [];
+                this.messageHostname = '';
                 this.loading = true;
                 this.validHostname = false;
 
