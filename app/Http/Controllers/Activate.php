@@ -12,7 +12,7 @@ class Activate
     {
         $hostname = Hostname::query()
             ->where('token', $token)
-//            ->whereNull('verified_at')
+            ->whereNull('verified_at')
             ->first();
 
         if (!$hostname) {
