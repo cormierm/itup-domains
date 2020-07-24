@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Hostname;
+use App\Jobs\CreateRecordSet;
 use Carbon\Carbon;
 
 class Activate
@@ -11,7 +12,7 @@ class Activate
     {
         $hostname = Hostname::query()
             ->where('token', $token)
-            ->whereNull('verified_at')
+//            ->whereNull('verified_at')
             ->first();
 
         if (!$hostname) {
@@ -35,6 +36,8 @@ class Activate
         $hostname->update([
             'verified_at' => Carbon::now()
         ]);
+
+        CreateRecordSet::dispatch($hostname);
 
         return view('home', [
             'alert' => [

@@ -3,6 +3,7 @@
 namespace Tests\App\Http\Controllers;
 
 use App\Hostname;
+use App\Jobs\CreateRecordSet;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -43,6 +44,8 @@ class ActivateTest extends TestCase
     /** @test */
     public function itWillActivateNonVerifiedHostnameWithValidToken(): void
     {
+
+        $this->expectsJobs(CreateRecordSet::class);
 
         $hostname = factory(Hostname::class)->create([
             'verified_at' => null,
