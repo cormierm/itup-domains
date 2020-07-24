@@ -41,7 +41,7 @@ class CreateRecordSet implements ShouldQueue
                             'Action' => 'CREATE',
                             'ResourceRecordSet' => [
                                 'Name' => $this->hostname->fullName() . '.',
-                                'TTL' => 300,
+                                'TTL' => 172800, // 2 days
                                 'Type' => 'A',
                                 'ResourceRecords' => [
                                     [
