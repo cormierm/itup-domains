@@ -1,7 +1,5 @@
 <template>
     <div class="home">
-        <h1 class="base-title">ItUp.ca</h1>
-
         <v-alert v-if="alert" :type="alert.type">
             {{ alert.text }}
         </v-alert>
@@ -178,11 +176,8 @@
 
 <style scoped>
     .home {
+        height: 100%;
         padding: 10px 50px;
-    }
-    .base-title {
-        font-size: 3rem;
-        font-weight: 300;
     }
 
     .register-buttons {
@@ -193,11 +188,5 @@
 
     .v-field {
         padding-bottom: 10px;
-    }
-
-    p {
-        font-size: 1.3rem;
-        color: #424242;
-        font-weight: 300;
     }
 </style>

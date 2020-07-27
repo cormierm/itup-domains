@@ -25,6 +25,12 @@
     <div id="app">
         <v-app>
             <v-main>
+                <v-app-bar
+                    dense
+                    dark
+                >
+                    <v-toolbar-title>{{ strtoupper(config('app.name')) }}</v-toolbar-title>
+                </v-app-bar>
                 @yield('content')
             </v-main>
         </v-app>
