@@ -4,7 +4,7 @@ phases:
   install:
     runtime-versions:
       php: 7.3
-      nodejs: 8
+      nodejs: 10
     commands:
       - echo Entered the install phase...
       - composer install --no-interaction
@@ -12,6 +12,7 @@ phases:
   pre_build:
     commands:
       - echo Entered the pre_build phase...
+      - php artisan migrate
       - cp .env.example .env.testing
       - php artisan key:generate --env=testing
       - ./vendor/bin/phpunit --configuration=phpunit.xml --testdox
