@@ -19,7 +19,7 @@ class RegisterTest extends TestCase
         $this->postJson(route('register'), [
             'hostname' => 'foo',
             'ip' => '33.33.33.33',
-            'email' => 'foo@bar.com'
+            'email' => 'foo@vehikl.com'
         ])->assertSuccessful();
 
         $this->assertDatabaseHas('hostnames', [
