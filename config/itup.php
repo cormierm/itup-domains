@@ -2,5 +2,6 @@
 
 return [
     'domain' => 'itup.ca',
-    'hostedZoneId' => env('HOSTED_ZONE_ID', ''),
+    'hosted_zone_id' => env('HOSTED_ZONE_ID', ''),
+    'blocked_hostnames' => ['dev', 'www', 'mail', 'mx'],
 ];
