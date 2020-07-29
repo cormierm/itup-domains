@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\NotReservedIp;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -25,13 +26,18 @@ class RegisterRequest extends FormRequest
                 'ipv4',
                 new NotReservedIp,
             ],
+            'email' => [
+                'required',
+                'email',
+                'ends_with:' . implode(',', config('itup.allowed_emails')),
+            ],
         ];
     }
 
     public function messages()
     {
         return [
-            'email.ends_with' => 'The email provided is blocked from registering. Please try another email.'
+            'email.ends_with' => 'The email provided is blocked. Please try another email.'
         ];
     }
 }
