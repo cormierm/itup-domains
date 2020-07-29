@@ -20,8 +20,11 @@ class RegisterRequest extends FormRequest
                 'regex:/^[a-z0-9-]+$/i',
                 'unique:hostnames,name',
             ],
-            'ip' => 'required|ipv4',
-            'email' => 'required|email|ends_with:@vehikl.com',
+            'ip' => [
+                'required',
+                'ipv4',
+                new NotReservedIp,
+            ],
         ];
     }
 
