@@ -13,6 +13,7 @@ class CreateHostnamesTable extends Migration
             $table->string('name')->unique();
             $table->string('email');
             $table->string('ip');
+            $table->dateTime('expires_at')->nullable();
             $table->dateTime('verified_at')->nullable();
             $table->softDeletes();
             $table->timestamps();
