@@ -27,7 +27,7 @@ class Register extends Mailable
             ->subject('Activate your hostname: ' . $this->hostname->fullName())
             ->markdown('emails.register', [
                 'url' => route('activate', $this->hostname->token),
-                'domain' => $this->hostname->fullName()
+                'hostname' => $this->hostname
             ]);
     }
 }
