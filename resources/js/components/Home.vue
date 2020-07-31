@@ -55,6 +55,15 @@
                         </template>
                     </v-text-field>
 
+                    <v-select
+                        class="v-field"
+                        outlined
+                        v-model="expiresIn"
+                        :items="expiresInItems"
+                        label="How Long Do You Want This Hostname?"
+                        :error-messages="formErrors['expires_in']"
+                    ></v-select>
+
                     <div class="register-buttons">
                         <v-btn
                             text
@@ -110,6 +119,21 @@
                 email: '',
                 formErrors: {},
                 validHostname: false,
+                expiresIn: 1,
+                expiresInItems: [
+                    {
+                        text: '1 Day',
+                        value: 1,
+                    },
+                    {
+                        text: '1 Week',
+                        value: 7,
+                    },
+                    {
+                        text: '1 Month',
+                        value: 30,
+                    }
+                ]
             };
         },
         watch: {
@@ -126,6 +150,7 @@
                 this.ip = '';
                 this.email = '';
                 this.hostname = '';
+                this.expiresIn = 1;
             },
             submit() {
                 this.formErrors = {};
@@ -135,6 +160,7 @@
                     hostname: this.hostname,
                     ip: this.ip,
                     email: this.email,
+                    expires_in: this.expiresIn,
                 }).then((response) => {
                     this.message = {
                         type: 'success',
