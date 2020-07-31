@@ -32,6 +32,7 @@ class RegisterRequest extends FormRequest
                 'email',
                 'ends_with:' . implode(',', config('itup.allowed_emails')),
             ],
+            'expires_in' => 'required|integer|between:1,30',
         ];
     }
 
