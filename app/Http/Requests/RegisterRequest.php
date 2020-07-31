@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\AvailableHostname;
 use App\Rules\NotReservedIp;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -19,7 +20,7 @@ class RegisterRequest extends FormRequest
                 'max:50',
                 Rule::notIn(config('itup.blocked_hostnames')),
                 'regex:/^[a-z0-9-]+$/i',
-                'unique:hostnames,name',
+                new AvailableHostname,
             ],
             'ip' => [
                 'required',
