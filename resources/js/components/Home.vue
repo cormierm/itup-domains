@@ -28,7 +28,18 @@
                     :success-messages="messageHostname"
                     :error-messages="formErrors['hostname']"
                     suffix=".itup.ca"
+                    @keydown.enter="check"
                 ></v-text-field>
+
+                <v-card-actions v-if="!validHostname">
+                    <v-btn
+                        text
+                        :loading="loading"
+                        @click="check"
+                    >
+                        Search Hostname
+                    </v-btn>
+                </v-card-actions>
 
                 <div v-if="validHostname">
                     <v-text-field
@@ -81,17 +92,6 @@
                     </div>
                 </div>
             </v-card-text>
-
-            <v-card-actions v-if="!validHostname">
-                <v-btn
-                    text
-                    :loading="loading"
-                    @click="check"
-                >
-                    Search Hostname
-                </v-btn>
-            </v-card-actions>
-
         </v-card>
     </div>
 </template>
