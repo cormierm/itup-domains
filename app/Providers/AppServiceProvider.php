@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Aws\Credentials\Credentials;
 use Aws\Route53\Route53Client;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -24,6 +25,6 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        //
+        Schema::defaultStringLength(191);
     }
 }
