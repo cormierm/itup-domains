@@ -13,10 +13,7 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind(Route53Client::class, function () {
-            $credentials = new Credentials(env('AWS_ACCESS_KEY_ID'), env('AWS_SECRET_ACCESS_KEY'));
-
             return Route53Client::factory([
-                'credentials' => $credentials,
                 'region' => 'us-east-1',
                 'version' => 'latest'
             ]);
