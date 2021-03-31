@@ -20,9 +20,8 @@
                 <v-text-field
                     class="v-field"
                     label="Hostname"
-                    prepend-inner-icon="fa-search"
                     :value="hostname"
-                    :readonly="true"
+                    :disabled="true"
                     :error-messages="formErrors['hostname']"
                     suffix=".itup.ca"
                 ></v-text-field>
