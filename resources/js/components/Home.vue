@@ -22,7 +22,7 @@
                     label="Hostname"
                     prepend-inner-icon="fa-search"
                     v-model="hostname"
-                    :read-only="validHostname"
+                    :readonly="validHostname"
                     maxlength="50"
                     counter
                     :success-messages="messageHostname"
