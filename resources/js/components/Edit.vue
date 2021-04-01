@@ -20,7 +20,7 @@
                 <v-text-field
                     class="v-field"
                     label="Hostname"
-                    :value="hostname"
+                    v-model="hostname"
                     :error-messages="formErrors['hostname']"
                     suffix=".itup.ca"
                 ></v-text-field>
@@ -79,9 +79,9 @@ export default {
             type: Object,
             default: null,
         },
-        hostname: {
+        incomingHostname: {
             type: String,
-            required: true,
+            default: '',
         },
         remoteIp: {
             type: String,
@@ -92,6 +92,7 @@ export default {
         return {
             loading: false,
             message: null,
+            hostname: this.incomingHostname,
             ip: '',
             email: '',
             formErrors: {},
