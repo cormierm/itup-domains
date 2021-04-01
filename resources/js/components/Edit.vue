@@ -14,14 +14,13 @@
             color="#1F7087"
             dark
         >
-            <v-card-title class="headline">Update Your Hostname</v-card-title>
+            <v-card-title class="headline">Update Hostname</v-card-title>
 
             <v-card-text>
                 <v-text-field
                     class="v-field"
                     label="Hostname"
                     :value="hostname"
-                    :disabled="true"
                     :error-messages="formErrors['hostname']"
                     suffix=".itup.ca"
                 ></v-text-field>
@@ -60,7 +59,7 @@
                 ></v-select>
 
                 <div class="submit-buttons">
-                    <v-btn text :loading="loading" @click="submit">
+                    <v-btn text :disabled="disableUpdate" :loading="loading" @click="submit">
                         Update
                     </v-btn>
                     <v-btn text @click="reset">
@@ -112,6 +111,11 @@ export default {
                 },
             ],
         };
+    },
+    computed: {
+        disableUpdate() {
+            return this.hostname === '' || this.ip === '' || this.email === '';
+        }
     },
     methods: {
         reset() {
