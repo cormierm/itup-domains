@@ -61,12 +61,12 @@ class UpdateRecordSet implements ShouldQueue
 
             $hostname->update(['ip' => $this->details['ip']]);
         } catch (Throwable $e) {
-            Log::error('Could not update recordset' . $this->hostname->name, [
-                'hostname' => $this->hostname,
+            Log::error('Could not update recordset' . $hostname->name, [
+                'hostname' => $hostname,
                 'exception' => $e,
             ]);
 
-            Mail::to($this->hostname->email)->send(new ActivationError($this->hostname));
+            Mail::to($hostname->email)->send(new ActivationError($hostname));
         }
     }
 }
