@@ -30,7 +30,7 @@ class Update extends Mailable
         return $this->from(config('mail.from.address'))
             ->subject('Activate your hostname changes: ' . $hostname->fullName())
             ->markdown('emails.update', [
-                'url' => route('activate', $this->transaction->token),
+                'url' => route('confirm.update', $this->transaction->token),
                 'hostname' => $hostname,
                 'changes' => $changes,
             ]);

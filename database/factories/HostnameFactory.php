@@ -12,5 +12,6 @@ $factory->define(Hostname::class, function (Faker $faker) {
         'email' => $faker->email,
         'ip' => $faker->ipv4,
         'token' => $faker->uuid,
+        'expires_at' => \Carbon\Carbon::now()->toDateTimeString(),
     ];
 });
