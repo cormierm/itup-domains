@@ -74,6 +74,7 @@
                     <div class="register-buttons">
                         <v-btn
                             text
+                            :disabled="disableRegister"
                             :loading="loading"
                             @click="submit"
                         >
@@ -125,6 +126,11 @@ export default {
         hostname() {
             this.messageHostname = '';
             this.validHostname = false;
+        }
+    },
+    computed: {
+        disableRegister() {
+            return this.hostname === '' || this.ip === '' || this.email === '';
         }
     },
     methods: {
