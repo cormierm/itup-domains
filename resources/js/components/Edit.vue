@@ -1,9 +1,5 @@
 <template>
     <div class="update-screen">
-        <v-alert v-if="alert" :type="alert.type">
-            {{ alert.text }}
-        </v-alert>
-
         <v-alert v-if="message" :type="message.type">
             {{ message.text }}
         </v-alert>
@@ -85,20 +81,6 @@ export default {
             email: '',
             formErrors: {},
             expiresIn: 1,
-            expiresInItems: [
-                {
-                    text: '1 Day',
-                    value: 1,
-                },
-                {
-                    text: '1 Week',
-                    value: 7,
-                },
-                {
-                    text: '1 Month',
-                    value: 30,
-                },
-            ],
         };
     },
     computed: {
