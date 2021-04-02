@@ -17,19 +17,14 @@
             <v-card-title class="headline">Search For Your Hostname</v-card-title>
 
             <v-card-text>
-                <v-text-field
-                    class="v-field"
-                    label="Hostname"
+                <hostname-input
                     prepend-inner-icon="fa-search"
                     v-model="hostname"
                     :readonly="validHostname"
-                    maxlength="50"
-                    counter
                     :success-messages="messageHostname"
                     :error-messages="formErrors['hostname']"
-                    :suffix="'.' + domain"
-                    @keydown.enter="check"
-                ></v-text-field>
+                    @enter="check"
+                />
 
                 <v-card-actions v-if="!validHostname">
                     <v-btn
@@ -94,11 +89,12 @@
 </template>
 
 <script>
+import HostnameInput from './Inputs/HostnameInput';
 import HowLongSelect from './Inputs/HowLongSelect';
 
 export default {
     name: "Home",
-    components: { HowLongSelect },
+    components: { HostnameInput, HowLongSelect },
     props: {
         alert: {
             type: Object,

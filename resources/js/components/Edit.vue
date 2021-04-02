@@ -17,13 +17,10 @@
             <v-card-title class="headline">Update Hostname</v-card-title>
 
             <v-card-text>
-                <v-text-field
-                    class="v-field"
-                    label="Hostname"
+                <hostname-input
                     v-model="hostname"
                     :error-messages="formErrors['hostname']"
-                    :suffix="'.' + domain"
-                ></v-text-field>
+                />
 
                 <v-text-field
                     class="v-field"
@@ -68,11 +65,12 @@
 </template>
 
 <script>
+import HostnameInput from './Inputs/HostnameInput';
 import HowLongSelect from './Inputs/HowLongSelect';
 
 export default {
     name: 'Update',
-    components: { HowLongSelect },
+    components: { HostnameInput, HowLongSelect },
     props: {
         alert: {
             type: Object,

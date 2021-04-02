@@ -19,7 +19,7 @@ export default {
             required: true,
         },
         errorMessages: {
-            type: String, Array,
+            type: [String, Array],
             default: null
         }
     },
@@ -52,6 +52,3 @@ export default {
 }
 </script>
 
-<style scoped>
-
-</style>
