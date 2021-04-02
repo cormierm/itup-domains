@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\AllowedEmail;
 use App\Rules\AvailableHostname;
 use App\Rules\NotReservedIp;
 use Illuminate\Foundation\Http\FormRequest;
@@ -30,7 +31,7 @@ class RegisterRequest extends FormRequest
             'email' => [
                 'required',
                 'email',
-                'ends_with:' . implode(',', config('itup.allowed_emails')),
+                'ends_with:' . AllowedEmail::all()->pluck('email')->join(','),
             ],
             'expires_in' => 'required|integer|between:1,30',
         ];
