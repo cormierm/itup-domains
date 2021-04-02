@@ -22,7 +22,7 @@
                     label="Hostname"
                     v-model="hostname"
                     :error-messages="formErrors['hostname']"
-                    suffix=".itup.ca"
+                    :suffix="'.' + domain"
                 ></v-text-field>
 
                 <v-text-field
@@ -115,6 +115,9 @@ export default {
     computed: {
         disableUpdate() {
             return this.hostname === '' || this.ip === '' || this.email === '';
+        },
+        domain() {
+            return process.env.MIX_DOMAIN;
         }
     },
     methods: {

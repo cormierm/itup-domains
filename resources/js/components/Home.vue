@@ -27,7 +27,7 @@
                     counter
                     :success-messages="messageHostname"
                     :error-messages="formErrors['hostname']"
-                    suffix=".itup.ca"
+                    :suffix="'.' + domain"
                     @keydown.enter="check"
                 ></v-text-field>
 
@@ -131,6 +131,9 @@ export default {
     computed: {
         disableRegister() {
             return this.hostname === '' || this.ip === '' || this.email === '';
+        },
+        domain() {
+            return process.env.MIX_DOMAIN;
         }
     },
     methods: {

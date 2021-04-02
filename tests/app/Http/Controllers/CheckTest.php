@@ -14,18 +14,22 @@ class CheckTest extends TestCase
     /** @test */
     public function itReturnsSuccessfulWhenHostnameIsAvailable(): void
     {
+        $domain = 'example.com';
         $hostname = 'foobar';
+        config()->set('itup.domain', $domain);
 
         $this->postJson(route('check'), ['hostname' => $hostname])
             ->assertSuccessful()
             ->assertJson([
-                'message' => "Congrats, {$hostname}.itup.ca is available!",
+                'message' => sprintf("Congrats, %s.%s is available!", $hostname, $domain),
             ]);
     }
 
     /** @test */
     public function itReturnsSuccessfulHostnameIsSoftDeleted(): void
     {
+        $domain = 'example.com';
+        config()->set('itup.domain', $domain);
         $hostname = factory(Hostname::class)->create([
             'name' => 'foobar',
             'deleted_at' => Carbon::now()
@@ -34,7 +38,7 @@ class CheckTest extends TestCase
         $this->postJson(route('check'), ['hostname' => $hostname->name])
             ->assertSuccessful()
             ->assertJson([
-                'message' => "Congrats, {$hostname->name}.itup.ca is available!",
+                'message' => sprintf("Congrats, %s.%s is available!", $hostname->name, $domain),
             ]);
     }
 

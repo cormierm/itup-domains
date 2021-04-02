@@ -10,7 +10,7 @@ class Check
     public function __invoke(CheckRequest $request): JsonResponse
     {
         return new JsonResponse([
-            'message' => "Congrats, {$request->input('hostname')}.itup.ca is available!"
+            'message' => sprintf("Congrats, %s.%s is available!", $request->input('hostname'), config('itup.domain'))
         ]);
     }
 }
