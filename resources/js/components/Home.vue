@@ -93,7 +93,7 @@
 </template>
 
 <script>
-import HowLongSelect from './HowLongSelect';
+import HowLongSelect from './Inputs/HowLongSelect';
 
 export default {
     name: "Home",
