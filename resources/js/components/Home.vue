@@ -26,15 +26,24 @@
                     @enter="check"
                 />
 
-                <v-card-actions v-if="!validHostname">
-                    <v-btn
-                        text
-                        :loading="loading"
-                        @click="check"
-                    >
-                        Search Hostname
-                    </v-btn>
-                </v-card-actions>
+                <div v-if="!validHostname">
+
+                    <div class="submit-buttons">
+                        <v-btn
+                            text
+                            :loading="loading"
+                            @click="check"
+                        >
+                            Search Hostname
+                        </v-btn>
+                        <v-btn
+                            text
+                            @click="updateHostname"
+                        >
+                            Update Hostname
+                        </v-btn>
+                    </div>
+                </div>
 
                 <div v-if="validHostname">
                     <v-text-field
@@ -56,7 +65,7 @@
                         :error-messages="formErrors['expires_in']"
                     />
 
-                    <div class="register-buttons">
+                    <div class="submit-buttons">
                         <v-btn
                             text
                             :disabled="disableRegister"
@@ -173,6 +182,9 @@ export default {
                 }
             });
             this.loading = false;
+        },
+        updateHostname() {
+            window.location = `/edit?hostname=${this.hostname}`
         }
     }
 }
@@ -184,7 +196,7 @@ export default {
         padding: 10px 50px;
     }
 
-    .register-buttons {
+    .submit-buttons {
         margin-top: 20px;
         display: flex;
         justify-content: space-between;
