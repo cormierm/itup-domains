@@ -31,6 +31,11 @@
                 >
                     <v-toolbar-title>{{ strtoupper(config('app.name')) }}</v-toolbar-title>
                 </v-app-bar>
+                @if(isset($alert))
+                <v-alert type="{{ $alert['type']}}">
+                    {{ $alert['text'] }}
+                </v-alert>
+                @endif
                 @yield('content')
             </v-main>
         </v-app>

@@ -1,9 +1,5 @@
 <template>
     <div class="home">
-        <v-alert v-if="alert" :type="alert.type">
-            {{ alert.text }}
-        </v-alert>
-
         <v-alert v-if="message" :type="message.type">
             {{ message.text }}
         </v-alert>
@@ -96,10 +92,6 @@ export default {
     name: "Home",
     components: { HostnameInput, HowLongSelect, IpAddressInput },
     props: {
-        alert: {
-            type: Object,
-            default: null
-        },
         remoteIp: {
             type: String,
             default: null
