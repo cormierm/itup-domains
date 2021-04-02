@@ -59,10 +59,6 @@ export default {
     name: 'Update',
     components: { HostnameInput, HowLongSelect, IpAddressInput },
     props: {
-        alert: {
-            type: Object,
-            default: null,
-        },
         incomingHostname: {
             type: String,
             default: '',
