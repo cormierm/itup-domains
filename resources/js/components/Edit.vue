@@ -49,14 +49,10 @@
                     </template>
                 </v-text-field>
 
-                <v-select
-                    class="v-field"
-                    outlined
+                <how-long-select
                     v-model="expiresIn"
-                    :items="expiresInItems"
-                    label="How Long Do You Want This Hostname?"
                     :error-messages="formErrors['expires_in']"
-                ></v-select>
+                />
 
                 <div class="submit-buttons">
                     <v-btn text :disabled="disableUpdate" :loading="loading" @click="submit">
@@ -72,8 +68,11 @@
 </template>
 
 <script>
+import HowLongSelect from './HowLongSelect';
+
 export default {
     name: 'Update',
+    components: { HowLongSelect },
     props: {
         alert: {
             type: Object,

@@ -66,14 +66,10 @@
                         </template>
                     </v-text-field>
 
-                    <v-select
-                        class="v-field"
-                        outlined
+                    <how-long-select
                         v-model="expiresIn"
-                        :items="expiresInItems"
-                        label="How Long Do You Want This Hostname?"
                         :error-messages="formErrors['expires_in']"
-                    ></v-select>
+                    />
 
                     <div class="register-buttons">
                         <v-btn
@@ -97,107 +93,96 @@
 </template>
 
 <script>
-    export default {
-        name: "Home",
-        props: {
-            alert: {
-                type: Object,
-                default: null
-            },
-            remoteIp: {
-                type: String,
-                default: null
-            }
-        },
-        data() {
-            return {
-                loading: false,
-                message: null,
-                messageHostname: [],
-                hostname: '',
-                ip: '',
-                email: '',
-                formErrors: {},
-                validHostname: false,
-                expiresIn: 1,
-                expiresInItems: [
-                    {
-                        text: '1 Day',
-                        value: 1,
-                    },
-                    {
-                        text: '1 Week',
-                        value: 7,
-                    },
-                    {
-                        text: '1 Month',
-                        value: 30,
-                    }
-                ]
-            };
-        },
-        watch: {
-            hostname() {
-                this.messageHostname = '';
-                this.validHostname = false;
-            }
-        },
-        methods: {
-            reset() {
-                this.validHostname = false;
-                this.messageHostname = '';
-                this.formErrors = {};
-                this.ip = '';
-                this.email = '';
-                this.hostname = '';
-                this.expiresIn = 1;
-            },
-            submit() {
-                this.formErrors = {};
-                this.loading = true;
+import HowLongSelect from './HowLongSelect';
 
-                axios.post('/register', {
-                    hostname: this.hostname,
-                    ip: this.ip,
-                    email: this.email,
-                    expires_in: this.expiresIn,
-                }).then((response) => {
-                    this.message = {
-                        type: 'success',
-                        text: response.data.message
-                    };
-                    this.reset();
-                }).catch((err) => {
-                    if (err.response.status === 422) {
-                        this.formErrors = err.response.data.errors;
-                    } else {
-                        console.error(err);
-                    }
-                });
-                this.loading = false;
-            },
-            check() {
-                this.formErrors = {};
-                this.messageHostname = '';
-                this.loading = true;
-                this.validHostname = false;
+export default {
+    name: "Home",
+    components: { HowLongSelect },
+    props: {
+        alert: {
+            type: Object,
+            default: null
+        },
+        remoteIp: {
+            type: String,
+            default: null
+        }
+    },
+    data() {
+        return {
+            loading: false,
+            message: null,
+            messageHostname: [],
+            hostname: '',
+            ip: '',
+            email: '',
+            formErrors: {},
+            validHostname: false,
+            expiresIn: 1,
+        };
+    },
+    watch: {
+        hostname() {
+            this.messageHostname = '';
+            this.validHostname = false;
+        }
+    },
+    methods: {
+        reset() {
+            this.validHostname = false;
+            this.messageHostname = '';
+            this.formErrors = {};
+            this.ip = '';
+            this.email = '';
+            this.hostname = '';
+            this.expiresIn = 1;
+        },
+        submit() {
+            this.formErrors = {};
+            this.loading = true;
 
-                axios.post('/check', {
-                    hostname: this.hostname,
-                }).then((response) => {
-                    this.messageHostname = [response.data.message];
-                    this.validHostname = true;
-                }).catch((err) => {
-                    if (err.response.status === 422) {
-                        this.formErrors = err.response.data.errors;
-                    } else {
-                        console.error(err);
-                    }
-                });
-                this.loading = false;
-            }
+            axios.post('/register', {
+                hostname: this.hostname,
+                ip: this.ip,
+                email: this.email,
+                expires_in: this.expiresIn,
+            }).then((response) => {
+                this.message = {
+                    type: 'success',
+                    text: response.data.message
+                };
+                this.reset();
+            }).catch((err) => {
+                if (err.response.status === 422) {
+                    this.formErrors = err.response.data.errors;
+                } else {
+                    console.error(err);
+                }
+            });
+            this.loading = false;
+        },
+        check() {
+            this.formErrors = {};
+            this.messageHostname = '';
+            this.loading = true;
+            this.validHostname = false;
+
+            axios.post('/check', {
+                hostname: this.hostname,
+            }).then((response) => {
+                this.messageHostname = [response.data.message];
+                this.validHostname = true;
+            }).catch((err) => {
+                if (err.response.status === 422) {
+                    this.formErrors = err.response.data.errors;
+                } else {
+                    console.error(err);
+                }
+            });
+            this.loading = false;
         }
     }
+}
 </script>
 
 <style scoped>
