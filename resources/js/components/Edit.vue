@@ -30,21 +30,11 @@
                     :error-messages="formErrors['email']"
                 ></v-text-field>
 
-                <v-text-field
-                    class="v-field"
-                    label="IP Address"
+                <ip-address-input
                     v-model="ip"
                     :error-messages="formErrors['ip']"
-                >
-                    <template v-slot:append-outer>
-                        <v-btn
-                            outlined
-                            @click="ip = remoteIp"
-                        >
-                            <v-icon>fa fa-map-marker-alt</v-icon>&nbsp;{{ remoteIp }}
-                        </v-btn>
-                    </template>
-                </v-text-field>
+                    :remote-ip="remoteIp"
+                />
 
                 <how-long-select
                     v-model="expiresIn"
@@ -67,10 +57,11 @@
 <script>
 import HostnameInput from './Inputs/HostnameInput';
 import HowLongSelect from './Inputs/HowLongSelect';
+import IpAddressInput from './Inputs/IpAddressInput';
 
 export default {
     name: 'Update',
-    components: { HostnameInput, HowLongSelect },
+    components: { HostnameInput, HowLongSelect, IpAddressInput },
     props: {
         alert: {
             type: Object,
@@ -114,9 +105,6 @@ export default {
         disableUpdate() {
             return this.hostname === '' || this.ip === '' || this.email === '';
         },
-        domain() {
-            return process.env.MIX_DOMAIN;
-        }
     },
     methods: {
         reset() {
