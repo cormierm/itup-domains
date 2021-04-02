@@ -33,7 +33,7 @@ class RegisterRequest extends FormRequest
                 'email',
                 'ends_with:' . AllowedEmail::all()->pluck('email')->join(','),
             ],
-            'expires_in' => 'required|integer|between:1,30',
+            'expires_in' => 'required|integer|between:1,365',
         ];
     }
 

@@ -18,7 +18,7 @@ class UpdateRequest extends FormRequest
                 'ipv4',
                 new NotReservedIp,
             ],
-            'expires_in' => 'required|integer|between:1,30',
+            'expires_in' => 'required|integer|between:1,365',
         ];
     }
 }

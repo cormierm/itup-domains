@@ -37,7 +37,15 @@ export default {
                 {
                     text: '1 Month',
                     value: 30,
-                }
+                },
+                {
+                    text: '3 Months',
+                    value: 90,
+                },
+                {
+                    text: '1 Year',
+                    value: 365,
+                },
             ]
         };
     }
