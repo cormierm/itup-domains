@@ -184,8 +184,7 @@ export default {
 
 <style scoped>
     .home {
-        height: 100%;
-        padding: 10px 50px;
+        padding-top: 50px;
     }
 
     .submit-buttons {

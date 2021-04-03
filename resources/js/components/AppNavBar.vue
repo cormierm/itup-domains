@@ -2,6 +2,7 @@
     <v-app-bar
         dense
         dark
+        fixed
     >
         <v-toolbar-title><strong>{{ appName }}</strong></v-toolbar-title>
         <v-spacer></v-spacer>
