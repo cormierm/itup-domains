@@ -10,7 +10,7 @@
             color="#1F7087"
             dark
         >
-            <v-card-title class="headline">Update Hostname</v-card-title>
+            <v-card-title class="headline">Update Existing Hostname</v-card-title>
 
             <v-card-text>
                 <hostname-input
