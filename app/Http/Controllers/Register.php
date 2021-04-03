@@ -15,7 +15,7 @@ class Register
     {
 
         $hostname = Hostname::create([
-            'name' => $request->input('hostname'),
+            'name' => strtolower($request->input('hostname')),
             'email' => $request->input('email'),
             'ip' => $request->input('ip'),
             'expires_at' => Carbon::now()->addDays($request->input('expires_in')),
