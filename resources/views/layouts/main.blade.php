@@ -25,12 +25,7 @@
     <div id="app">
         <v-app>
             <v-main>
-                <v-app-bar
-                    dense
-                    dark
-                >
-                    <v-toolbar-title>{{ strtoupper(config('app.name')) }}</v-toolbar-title>
-                </v-app-bar>
+                <app-nav-bar></app-nav-bar>
                 @if(session()->has('alert'))
                     <v-alert type="{{ session()->get('alert')['type'] }}">
                         {{ session()->get('alert')['text'] }}
