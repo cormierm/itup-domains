@@ -39,11 +39,11 @@ class Activate
 
         CreateRecordSet::dispatch($hostname);
 
-        return view('home', [
-            'alert' => [
+        return redirect()
+            ->route('home')
+            ->with('alert', [
                 'type' => 'success',
                 'text' => 'Successfully activated hostname!'
-            ]
-        ]);
+            ]);
     }
 }

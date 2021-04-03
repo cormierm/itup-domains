@@ -27,7 +27,11 @@ class UpdateTest extends TestCase
         ]);
 
         $this->get(route('confirm.update', ['token' => $transaction->token]))
-            ->assertSuccessful();
+            ->assertRedirect(route('home'))
+            ->assertSessionHas('alert', [
+                'type' => 'success',
+                'text' => 'Successfully applied changes to hostname!',
+            ]);
 
         $this->assertEquals(Carbon::now()->addMonth(), $hostname->fresh()->expires_at);
     }
@@ -51,7 +55,11 @@ class UpdateTest extends TestCase
         ]);
 
         $this->get(route('confirm.update', ['token' => $transaction->token]))
-            ->assertSuccessful();
+            ->assertRedirect(route('home'))
+            ->assertSessionHas('alert', [
+                'type' => 'success',
+                'text' => 'Successfully applied changes to hostname!',
+            ]);
     }
 
 

@@ -52,8 +52,8 @@ class ActivateTest extends TestCase
         ]);
 
         $this->getJson(route('activate', $hostname->token))
-            ->assertViewIs('home')
-            ->assertViewHas('alert', [
+            ->assertRedirect(route('home'))
+            ->assertSessionHas('alert', [
                 'type' => 'success',
                 'text' => 'Successfully activated hostname!'
             ]);
