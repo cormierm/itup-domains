@@ -25,6 +25,7 @@
     <div id="app">
         <v-app>
             <v-main>
+                <app-nav-bar :fixed="true"></app-nav-bar>
                 <app-nav-bar></app-nav-bar>
                 @if(session()->has('alert'))
                     <v-alert type="{{ session()->get('alert')['type'] }}">

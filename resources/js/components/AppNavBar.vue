@@ -2,7 +2,7 @@
     <v-app-bar
         dense
         dark
-        fixed
+        :fixed="fixed"
     >
         <v-toolbar-title><strong>{{ appName }}</strong></v-toolbar-title>
         <v-spacer></v-spacer>
@@ -24,6 +24,12 @@
 <script>
 export default {
     name: 'AppNavBar',
+    props: {
+        fixed: {
+            type: Boolean,
+            default: false,
+        }
+    },
     computed: {
         appName() {
             return process.env.MIX_APP_NAME;

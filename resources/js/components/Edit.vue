@@ -121,10 +121,6 @@ export default {
 </script>
 
 <style scoped>
-    .edit {
-        padding-top: 50px;
-    }
-
     .submit-buttons {
         margin-top: 20px;
         display: flex;
