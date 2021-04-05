@@ -33,6 +33,7 @@ class SendMailForExpiredHostnames implements ShouldQueue
                     ->pluck('hostname_id')
             )
             ->where('expires_at', '<', Carbon::now())
+            ->whereNotNull('verified_at')
             ->get();
 
         $expiredHostnames->each(function ($hostname) {

@@ -17,13 +17,14 @@ class SendMailForExpiredHostnamesTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function itCanSendMailAndCreateTransactionForExpiredHostname() : void
+    public function itCanSendMailAndCreateTransactionForExpiredVerifiedHostname() : void
     {
 
         Mail::fake();
 
         $hostname = factory(Hostname::class)->create([
             'expires_at' => Carbon::now()->subDay(),
+            'verified_at' => Carbon::now()
         ]);
 
         $job = new SendMailForExpiredHostnames;
@@ -45,6 +46,7 @@ class SendMailForExpiredHostnamesTest extends TestCase
 
         $hostname = factory(Hostname::class)->create([
             'expires_at' => Carbon::now()->addDay(),
+            'verified_at' => Carbon::now()
         ]);
 
         $job = new SendMailForExpiredHostnames;
@@ -66,6 +68,7 @@ class SendMailForExpiredHostnamesTest extends TestCase
 
         $hostname = factory(Hostname::class)->create([
             'expires_at' => Carbon::now()->addDay(),
+            'verified_at' => Carbon::now()
         ]);
         factory(Transaction::class)->create([
             'hostname_id' => $hostname->id,
