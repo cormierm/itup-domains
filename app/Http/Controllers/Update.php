@@ -22,6 +22,7 @@ class Update extends Controller
 
         $transaction = Transaction::create([
             'action' => 'update',
+            'hostname_id' => $hostname->id,
             'details' => json_encode([
                 'hostname_id' => $hostname->id,
                 'ip' => $request->input('ip'),

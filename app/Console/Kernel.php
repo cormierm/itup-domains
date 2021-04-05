@@ -4,6 +4,7 @@ namespace App\Console;
 
 use App\Jobs\DeleteExpiredHostnames;
 use App\Jobs\DeleteUnactivatedHostnames;
+use App\Jobs\SendMailForExpiredHostnames;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -22,6 +23,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->job(new DeleteUnactivatedHostnames)->everyMinute();
         $schedule->job(new DeleteExpiredHostnames)->everyMinute();
+        $schedule->job(new SendMailForExpiredHostnames)->everyMinute();
     }
 
     /**

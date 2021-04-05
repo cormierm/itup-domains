@@ -16,7 +16,8 @@ class CreateTransactionsTable extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->string('action');
-            $table->json('details');
+            $table->unsignedInteger('hostname_id');
+            $table->json('details')->nullable();
             $table->string('token');
             $table->timestamps();
             $table->softDeletes();

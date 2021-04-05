@@ -19,6 +19,7 @@ class UpdateTest extends TestCase
         Carbon::setTestNow('now');
         $hostname = factory(Hostname::class)->create();
         $transaction = factory(Transaction::class)->create([
+            'hostname_id' => $hostname->id,
             'details' => json_encode([
                 'hostname_id' => $hostname->id,
                 'ip' => $hostname->ip,
@@ -47,6 +48,7 @@ class UpdateTest extends TestCase
         ]);
         $newIp = '12.12.12.12';
         $transaction = factory(Transaction::class)->create([
+            'hostname_id' => $hostname->id,
             'details' => json_encode([
                 'hostname_id' => $hostname->id,
                 'ip' => $newIp,
@@ -68,6 +70,7 @@ class UpdateTest extends TestCase
     {
         Carbon::setTestNow('now');
         $transaction = factory(Transaction::class)->create([
+            'hostname_id' => 1,
             'details' => '',
             'created_at' => Carbon::now()->subWeek()
         ]);

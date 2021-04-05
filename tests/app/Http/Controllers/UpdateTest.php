@@ -29,6 +29,7 @@ class UpdateTest extends TestCase
             ->assertSuccessful();
 
         $this->assertDatabaseHas('transactions', [
+            'hostname_id' => $hostname->id,
             'action' => 'update',
             'details' => json_encode([
                 'hostname_id' => $hostname->id,
