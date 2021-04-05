@@ -4,8 +4,8 @@
 The following hostname is expired and needs to be renewed:
 
 Name:        **{{ $hostname->fullName() }}**<br>
-IP Address:    **{{ $changes['ip'] }}**<br>
-Expired:       **{{ \Carbon\Carbon::parse($changes['expires_at'])->toDayDateTimeString() }}**<br>
+IP Address:    **{{ $hostname->ip }}**<br>
+Expired:       **{{ \Carbon\Carbon::parse($hostname->expires_at)->toDayDateTimeString() }}**<br>
 
 @component('mail::button', ['url' => $url])
 Renew Hostname
