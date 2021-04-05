@@ -28,7 +28,7 @@ class Renew extends Mailable
         return $this->from(config('mail.from.address'))
             ->subject('Activate your hostname changes: ' . $this->transaction->hostname->fullName())
             ->markdown('emails.renew', [
-                'url' => route('confirm.renew', $this->transaction->token),
+                'url' => route('edit', ['hostname' => $this->transaction->hostname->name]),
                 'hostname' => $this->transaction->hostname,
             ]);
     }
