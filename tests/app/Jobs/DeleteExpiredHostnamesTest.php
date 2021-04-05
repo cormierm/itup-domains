@@ -14,10 +14,10 @@ class DeleteExpiredHostnamesTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function itDispatchesJobToDeleteExpiredHostnames(): void
+    public function itDispatchesJobToDeleteExpiredHostnamesOlderThanWeek(): void
     {
         factory(Hostname::class)->create([
-            'expires_at' => Carbon::now()->subHour(),
+            'expires_at' => Carbon::now()->subDays(8),
         ]);
         $this->expectsJobs(DeleteRecordSet::class);
 

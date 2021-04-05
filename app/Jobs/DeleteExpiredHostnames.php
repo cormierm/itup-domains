@@ -17,7 +17,7 @@ class DeleteExpiredHostnames implements ShouldQueue
     public function handle(): void
     {
         Hostname::query()
-            ->where('expires_at', '<', Carbon::now())
+            ->where('expires_at', '<', Carbon::now()->subWeek())
             ->each(function($hostname) {
                 DeleteRecordSet::dispatch($hostname);
             });
