@@ -1,0 +1,30 @@
+ip: 192.168.10.10
+memory: 2048
+cpus: 2
+provider: virtualbox
+authorize: ~/.ssh/id_rsa.pub
+keys:
+    - ~/.ssh/id_rsa
+folders:
+    -
+        map: /[path to itup-domains]
+        to: /home/vagrant/code
+sites:
+    -
+        map: itup.test
+        to: /home/vagrant/code/public
+databases:
+    - domains
+features:
+    -
+        mysql: true
+    -
+        mariadb: false
+    -
+        postgresql: false
+    -
+        ohmyzsh: true
+    -
+        webdriver: false
+name: itup-domains
+hostname: itup-domains

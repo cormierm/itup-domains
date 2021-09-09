@@ -6,6 +6,7 @@
 /public/js
 /storage/*.key
 /vendor
+/.vagrant
 .env
 .env.backup
 .phpunit.result.cache
