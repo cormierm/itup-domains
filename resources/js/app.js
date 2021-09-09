@@ -3,7 +3,7 @@ import '@fortawesome/fontawesome-free/css/all.css'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 
-window.Vue = require('vue');
+window.Vue = require('vue').default;
 
 Vue.component('app-nav-bar', require('./components/AppNavBar.vue').default);
 Vue.component('home', require('./components/Home.vue').default);
